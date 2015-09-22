@@ -2,11 +2,12 @@ require 'rspec'
 
 def remove_duplicates(nums)
   counts = Hash.new(0)
-  nums.delete_if do |num|
-    counts[num] += 1
-    true if counts[num] > 2
-  end
-  return nums.size
+  nums.delete_if { |num| (counts[num] += 1) > 2 }.size
+  # nums.delete_if do |num|
+  #   counts[num] += 1
+  #   true if counts[num] > 2
+  # end
+  # return nums.size
 end
 
 RSpec.describe 'Check remove duplicate' do
